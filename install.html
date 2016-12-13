@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="How-To Guide for Sass">
+    <meta name="author" content="Tira Wickland">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>How-To Guide for Sass</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/stylesheets/main.css" rel="stylesheet">
+
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="assets/js/scripts.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--<a class="navbar-brand" href="#">Project name</a>-->
+        </div>
+        <div id="navbar" class="collapse navbar-right navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" href="index.html">Intro</a></li>
+            <li><a class="navbar-brand" href="install.html">Getting Started</a></li>
+            <li><a class="navbar-brand" href="features.html">Features</a></li>
+            <li><a class="navbar-brand" href="final.html">Final Note</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="intro-text">
+        <h1>Getting Started</h1>
+        <p>As mentioned before, Sass was originally implemented in and designed for Ruby.  Sass documentation provides concise, easy installation instructions <a href="http://sass-lang.com/install">here</a> for Ruby.</p>
+        <p>In order to use Sass with other languages, the library LibSass was created.  With the LibSass library, a wrapper can be utilized to implement it to a language of your choice.</p>
+        <p>This guide will be using the Javascript implementation: <strong>Sass.js</strong></p>
+        <p>Sass.js can be loaded in a browser using the Sass API or it can be run with Node-Sass for faster performance.</p>
+        <h2>Installing Sass in Node</h2>
+        <p>Before we begin to discuss installing Sass in Node, let’s first review some concepts and elements you’ll need to install Sass and many other packages to create powerful Javascript programs.  Package managers have been created to eliminate the need of manual installs and updates of many packages/libraries.  Sass is no exception.  In order to properly install Sass on your operating system, we'll use <a href="https://www.npmjs.com/">Node Package Manager</a>.</p>
+        <p>The package manager allows you to install Sass from the command line utility and also performs version and dependencies management, assuring that your installation of Sass will work smoothly.  Other common Node.js packages requiring package managers are Browserify, Grunt, Bower, Gulp, and Express.</p>
+        <p>This guide assumes that Node.JS has already been installed on your Operating System.  If you have not already installed Node, please do so <a href="https://github.com/nodejs/node/wiki">now</a></p>
+        <p>We will run a simple install of Node-Sass on a sample project for demonstration.  Feel free to follow along.  All commands will be run in command line.</p>
+        <h3>Let's Begin:</h3>
+        <p>In command-line we'll make a sample project</p>
+        <p>Start by making a directory for the project and change to that directory</p>
+        <pre>
+mkdir sample && cd sample
+        </pre>
+        <p> Then you can create three directories for the code</p>
+        <pre>
+mkdir stylesheets stylesheets/scss stylesheets/css
+        </pre>
+         <h3>Let's make a SCSS and HTML file:</h3>
+        <p>In the text editor of your choice, make an empty main.scss file and save it in the stylesheets/scss directory.  Then make index.html and save it in the sample directory.</p>
+        <p>index.html</p>
+        <pre>
+&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;link href="stylesheets/main.css" rel="stylesheet"/>
+    &lt;/head>
+    &lt;body>
+          &lt;h1>Learn Sass&lt;/h1>
+          &lt;div id="skewRight">
+                &lt;ul> 
+                  &lt;h2>List&lt;/h2>
+                  &lt;li>Item 1&lt;/li>
+                  &lt;li>Item 2&lt;/li>
+                  &lt;li>Item 3&lt;/li>
+                &lt;/ul>
+          &lt;/div>
+          &lt;div>
+              &lt;table>
+                  &lt;tr>
+                      &lt;th class = "header">Header&lt;/th>
+                      &lt;th class = "header">Header&lt;/th>
+                      &lt;th class = "header">Header&lt;/th>
+                      &lt;th class = "header">Header&lt;/th>
+                  &lt;/tr>
+                  &lt;tr>
+                      &lt;td class = "first">Cell&lt;/td>
+                      &lt;td class = "first">Cell&lt;/td>
+                      &lt;td class = "first">Cell&lt;/td>
+                      &lt;td class = "first">Cell&lt;/td>
+                  &lt;/tr>
+                  &lt;tr>
+                      &lt;td class = "second">Cell&lt;/td>
+                      &lt;td class = "second">Cell&lt;/td>
+                      &lt;td class = "second">Cell&lt;/td>
+                      &lt;td class = "second">Cell&lt;/td>
+                  &lt;/tr>
+                  &lt;tr>
+                      &lt;td class = "third">Cell&lt;/td>
+                      &lt;td class = "third">Cell&lt;/td>
+                      &lt;td class = "third">Cell&lt;/td>
+                      &lt;td class = "third">Cell&lt;/td>
+                  &lt;/tr>
+              &lt;/table>
+          &lt;/div>
+      &lt;div id = "skewLeft">
+          &lt;h2>Paragraphs&lt;/h2>
+          &lt;p>sample text&lt;/p>
+      &lt;/div>
+    &lt;/body>
+&lt;/html>
+        </pre>
+        <p>Notice in the index.html file that we're using a css file as our stylesheet.  We haven't made this yet, but node-sass will. </p>
+        <h3>Let's install Node-Sass:</h3>
+        <p>You can either install node-sass in your project locally following the instructions below or install node-sass globally adding -g at the end of the install command.</p>
+        <p>If you're using Linux/OSX:</p>
+        <pre>npm install node-sass
+        </pre>
+        <p>If you're using Windows:</p>
+        <pre>npm install node-sass –msvs_version=2013
+        </pre>
+        <p>Visual Studio 2013 WD is necessary for compiling versions of Sass 0.9.4 and above on Windows.  This flag will ensure the npm manager uses Visual Studio 2013 if you have multiple versions of VS.</p>
+        <p>If you type 'ls' in command line, you should now see a directory named node_modules which contains everything you need to run the node-sass.</p>
+        <h3>Let's Compile Node-Sass:</h3>
+        <p>To compile, run the following command</p>
+        <pre>./node_modules/.bin/node-sass -o stylesheets/css stylesheets/scss –w
+        </pre>
+        <p>What does this mean?  To run node-sass use the script <em>node-sass</em> in the <em>bin</em> directory of <em>node_modules</em>.  <em>-o</em> stands for output file and <em>stylesheets/css</em> is the path to the output file(s).  <em>stylesheets/scss</em> is the path to the input file(s) that will be translated.  The <em>-w</em> at the end of the statement is for watch, allowing the command to continue looking for changes while node-sass is open.  To close node-sass enter ctrl + c. 
+        <p>NOTE: This command-line window will need to remain open for the node-sass to run, so open a new command-line or access your files via the sample directory.</p>
+        <p>Time to write some styling.  In your empty main.scss file write the following</p>
+        <p>main.scss</p>         
+        <pre>
+h1 {
+    color: blue;
+}
+        </pre>
+        <p>After saving the main.scss file, you should see a message in your command line stating "Rendering Complete, saving .css file...".  If you look in the css directory you will now see a file main.css with our scss translated.</p>  
+        <h3>Now you're ready to see what Sass can <a href="features.html">really do!!</a></h3>
+      </p>
+      </div>
+    </div><!-- /.container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

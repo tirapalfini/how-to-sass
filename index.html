@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="How-To Guide for Sass">
+    <meta name="author" content="Tira Wickland">
+    <link rel="icon" href="s.png">
+
+    <title>How-To Guide for Sass</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/stylesheets/main.css" rel="stylesheet">
+
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--<a class="navbar-brand" href="#">Project name</a>-->
+        </div>
+        <div id="navbar" class="collapse navbar-right navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" href="index.html">Intro</a></li>
+            <li><a class="navbar-brand" href="install.html">Getting Started</a></li>
+            <li><a class="navbar-brand" href="features.html">Features</a></li>
+            <li><a class="navbar-brand" href="final.html">Final Note</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="intro-text">
+        <img src= "assets/images/Sass.png" style="margin-top:40px" alt="sass" width="80%" align="center">
+        <p>
+          This guide will walk you through setting up and using Sass with Node.<br>If you would like to use Sass on a different framework please refer to the <a href="http://sass-lang.com/" target="_blank">documentation</a>.
+          </p>
+      </div>
+      <div>
+        <h2>What Is Sass?</h2>
+        <p>
+        Sass is a scripting language for style sheets.  Cascading Style Sheets (CSS) allow a developer to declare the styles, colors, and layouts of a web app, separating it from the content of the app to create better organization and management.  Using a series of selectors, CSS groups rules to the various elements on the page.</p>  
+        <p>However, the more elaborate the site becomes the longer and more complex the CSS will be. If you have multiple developers working on the CSS, the task of modification becomes daunting.  Sass was designed to change all that. It is a CSS preprocessor, meaning that it will convert your scripts to CSS that can then be compiled. Sass's emphasis is on organizatizing the stylesheets and minimalizing code, leading to efficient management and minimal errors. 
+      </p>
+      <div>
+        <h2>Why Sass?</h2>
+        <p> <strong>It's simple - </strong>You can get more done with less code in less time and your code is more readable and managable. Who doesn't like that?<br>
+        <strong>Anyone can learn - </strong>With extensive documentation and an ever-growing community of fans, it's easy for the novice developer to install, implement, and benefit from Sass.<br>
+        <strong>Anyone can use it - </strong>Sass was initially written for Ruby, but has now been expanded to include implementations in C, Go, Java, Javascript, Lua, .Net, Node, Perl, PHP, Python, and Scala. No matter what framework and language you use, Sass is there for you.<br>
+        <strong>It's powerful - </strong>CSS is limited in the rules that can be applied.  Sass is to CSS what object-oriented languages is to programming.  With power and elegance, Sass transforms your CSS. 
+        </p>
+      </div>
+      <div>
+        <h2>Features of Sass</h2>
+        <p>A preview of what's to come, the list below shows the tools Sass serves up for you.</p>
+          <ul>
+            <li>Preprocessing</li>
+            <li>Variables</li>
+            <li>Nesting</li>
+            <li>Partials</li>
+            <li>Import</li>
+            <li>Mixins</li>
+            <li>Inheritance</li>
+            <li>Operators</li>
+	          <li>Functions</li>
+          </ul>
+      </div>
+      <div>
+        <h2>Sassy Syntax</h2>
+        <p>Sass actually has two syntaxes.  The first, <strong> Indented Syntax (Sass)</strong> is the original syntax.  It uses indentation to separate code blocks unlike CSS which uses brackets.  It also uses newline characters to separate rules as opposed to semi-colons.  This made the code more readable than CSS, but for some developers who were used to the brackets and semi-colons of CSS, the fact they had to use a new sytnax for stylesheets frustrated them and prevented them from using some of the hacks they'd developed in CSS.</p>
+        <p>Sass listened to their followers and made a new sytnax for those loyal CSS fans, <strong>Sassy CSS (SCSS)</strong>. With SCSS, a developer uses brackets to separate code blocks like CSS and semicolons to separate rules.  CSS files can be SCSS files, meaning the CSS hacks work again!  It also means that vendor-specific syntax (here's looking at you Internet Explorer) also work.</p> 
+        CSS:
+        <pre>
+body {
+    background-color: blue;
+    font-size: 14px;
+}
+        </pre>
+        Sass:
+        <pre>
+body
+    background-color: blue
+    font-size: 14px
+        </pre>
+        SCSS:
+        <pre>
+body {
+    background-color: blue;
+    font-size: 14px;
+}
+        </pre>
+        <p>Traditional Sass files have the extension .sass, while the new (and more popular) SCSS files have the extension .SCSS.  For the remainder of the guide we will use SCSS.</p>
+      </div>
+      <div>
+        <h2>About This Guide</h2>
+        <p>This guide will be aimed at the novice developer who has basic understanding of HTML/CSS, and Javascript.   Node will also be discussed in regards to installation, but no experience with it is necessary.</p>
+      </div>
+      <div>
+      <h3>Ready...Set...<a href="install.html">Install</a></h3>
+      </div>
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

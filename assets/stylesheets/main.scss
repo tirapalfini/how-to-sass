@@ -1,0 +1,63 @@
+@import "customVariables";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+$mainColor: #c6538c;
+
+body { 
+	padding-top: 50px; 
+	font-size: 21px;
+	font-weight: 300;
+}
+
+intro-text {
+	padding: 40px 15px;
+ 	text-align: center;
+}
+
+.navbar {
+	background-color: $mainColor;
+}
+.navbar-static-top{
+	position: absolute;
+	width: 100%;
+	top: 0;
+}
+.navbar-default .navbar-nav >li >a {
+	color: #FFFFFF;
+	padding: 15px 30px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #FFFFFF;
+}
+
+h2, h3, h4 {
+	color: $mainColor;
+}
+
+h4 {
+	font-size: 21px;
+}
+
+.code {
+	background-color: #EDEDED;
+	padding: 30px 30px 10px;
+	border-radius: 10px;
+	font-size: 16px;
+}
+
+pre {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	padding: 20px 50px 0px;
+	background-color: #eff0f1;
+	border-radius: 10px;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}

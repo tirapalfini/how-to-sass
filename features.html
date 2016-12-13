@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="How-To Guide for Sass">
+    <meta name="author" content="Tira Wickland">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>How-To Guide for Sass</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/stylesheets/main.css" rel="stylesheet">
+
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--<a class="navbar-brand" href="#">Project name</a>-->
+        </div>
+        <div id="navbar" class="collapse navbar-right navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" href="index.html">Intro</a></li>
+            <li><a class="navbar-brand" href="install.html">Getting Started</a></li>
+            <li><a class="navbar-brand" href="features.html">Features</a></li>
+            <li><a class="navbar-brand" href="final.html">Final Note</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="intro-text">
+        <h1>Superpowers of Sass</h1>
+          <div>
+          <ul>
+            <li><a href = "#preprocessing">Preprocessing</a> - translates your scripts to CSS automatically</li>
+            <li><a href = "#variables">Variables</a> - store your information and reuse it throughout the stylesheet.</li>
+            <li><a href = "#nesting">Nesting </a>- sass's hierarchy keeps it simple.</li>
+            <li><a href = "#partials">Partials and Imports</a>- separate your code into snippets that can be included when needed.</li>
+            <li><a href = "#mixins">Mixins</a> - group properties of SCSS and reuse them hroughout the stylesheet</li>
+            <li><a href = "#inheritance">Inheritance</a> - 'extend' groups of properties to your selectors</li>
+            <li><a href = "#operators">Operators</a> - perform mathematical expressions on your properties</li>
+	          <li><a href="#functions">Functions</a> - dynamically change and create relations between your properties</li>
+          </ul>
+          <p>So without further ado let's dive into these features.  There will be examples you can follow along with either in the Sass Playground or with your sample project you created with Node-Sass</p>
+      </div>
+      <div>
+      <h2 id="preprocessing">Preprocessing</h2>
+      <p>As we've mentioned, CSS does have ways to modularize the stylesheets, separating them into smaller files.  However, without a preprocessing language like Sass the developer is left with having to make HTTP requests every time they have to compile the stylesheets at runtime.  This slows down performance.  Sass is different.  Sass compiles all the stylesheets in a single HTTP request, making it efficient and organized.  The best of both worlds. Don't worry, we'll see an example of preprocessing when we discuss Imports which is how Sass combines separate files. 
+      </p>
+      <h2 id="variables">Variables</h2>
+      <p>As programmers we have been told to look for redundant code and clean it up.  So imagine the frustration of developers who had to deal with writing a styling attribute every time they wrote it.  Image worse that the next developer wanted to change it.  Not a pleasant or easy task finding and modifying every instance of the attribute.  So variables is a big draw for developers to use Sass. 
+      Variables can be numbers, strings, colors, lists, maps, and null.    
+      </p>
+      <h4>How do you declare a variable?</h4>
+      <p>Variables are declared at the top of the SCSS file <em>(but after the Import files...more on that later)</em>.  The variable is declared with the $ symbol, similar to Javascript, Java, and PHP.  A variable can be scoped globally and locally in the selector</p>
+      <p>Here's an example</p>
+      <pre>
+$mainColor: blue;
+body {
+    background:$mainColor;
+}
+h1 {
+    $mainColor: green;
+    color: $mainColor;
+}
+      </pre>
+      <p>As you can see, $mainColor is globally declared as blue.  A local variable is then declared with the same name in the h1 selector to be green.  This is just the beginning of how Sass makes CSS more like a programming language instead of a style sheet language.</p> 
+      <p></p>Of note, if you want to redefine the global variable in a selector you can use a !global flag to redefine our variable $mainColor. For example:</p>
+<p class="sassmeister" data-gist-id="de3c69de0ae9f17623c7b6397cb2178e" data-height="480" data-theme="tomorrow"><a href="http://sassmeister.com/gist/de3c69de0ae9f17623c7b6397cb2178e">Play with this gist on SassMeister.</a></p><script src="http://cdn.sassmeister.com/js/embed.js" async></script>
+      </div>
+      </div>
+      <div>
+        <p>As mentioned before, you can play with the features on your sample project you created in the 'Getting Started' section, or you can use Sassmeister's Sass Playground.<p>
+        <p><strong>Challenge:</strong>  Your goal is to style your index.html with SCSS variables using your main.scss file (if node-sass isn't still running, rerun the command './node_modules/.bin/node-sass -o stylesheets/css stylesheets/scss –w' in your command-line).</p>
+        <ul>
+          <li>h1 should be blue.</li>  
+          <li>h2 should be green with no margins.</li> 
+          <li>div should have 15px margin.</li>
+          <li>td and th should have a solid, 1px, blue border and font-size 20px.</li>
+          <li>th should be blue</li>
+          <li>p and li should have no margins and font-size 20px.</li> 
+        </ul>
+        <p>Tips: for the colors, try playing with local and global variables.</p>
+        <p> Click the <a href= "http://www.sassmeister.com/gist/8b9e752d368d1fbf0006518fbd515ced" target="_blank">Sassmeister Link</a> to try the challenge and see CSS results <em>or</em> you can copy/paste the skeleton into your main.scss if you're following along with your local sample project (you'll want to remove the previous h1{color: blue;} code already written).</p>
+      <pre>
+//Color
+$mainColor: blue;
+
+//List
+$borderStyle: solid 1px $mainColor;
+
+//Number
+$fontSize: 20px;
+$space: 15px;
+$removeMargin: 0;
+
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+
+}
+
+div{
+
+}
+
+td, th {
+
+}
+
+th {
+
+}
+
+p, li {
+
+}
+
+table {
+    border-collapse: collapse;
+}
+      </pre>  
+      <p>For the solution to the challenge, click <a href="http://www.sassmeister.com/gist/31c7919c1f097c07f21e553106dc9e98" target="_blank"> here</a>.</p>  
+      </div>
+      <div>
+        <h2 id="nesting">Nesting</h2>
+        <p>Nesting is pretty straightforward.  Following the hierarchy of your HTML, you can nest your selectors.  For some developers, this can make it easier to style.  Below is a nesting example.</p> 
+        <p class="sassmeister" data-gist-id="2bb04dab2f9d855fec9185ab17efad4e" data-height="480" data-theme="tomorrow"><a href="http://sassmeister.com/gist/2bb04dab2f9d855fec9185ab17efad4e">Play with this gist on SassMeister.</a></p><script src="http://cdn.sassmeister.com/js/embed.js" async></script>
+        <p>Inception rule: Sass does not recommend you nest more than four levels deep</p>
+      </div>
+    <div>
+      <h2 id="partials">Partials and Imports</h2>
+      <p>Besides redundant code, another major pet-peeve of most developers is having a never-ending file of code as opposed to separate, concise files.  Sass allows these little concise files, called Partials.  These allow for speedy editing and great organization.  They are distinguished with an underscore in the beginning of their file name. For example, _footer.scss. To get these snippets of code, the import directive is used.      
+
+      Import your various files into the main file using the @import directive.  Any SCSS file can be imported into each other.  These imports must be made at the top of the SCSS file though before the variables.  
+
+      CSS allows multiple files, but they combine at runtime each with an HTTP request.  Meanwhile, Sass creates a main css file it presents to the web browser. So now you can have many files for components of the web app and they will not interfer with performance.  Perfect!</p>
+      <p>Those who've created a sample project can follow along with the following example: Create the _headers.scss partial, _tables.scss, and modify main.scss in your scss directory</p>
+      <p>_headers.scss</p>
+      <pre>
+$mainColor: blue;
+$removeMargin: 0;
+
+h1 {
+    color: $mainColor;
+    text-align: center;
+}
+
+h2 {
+    margin: $removeMargin;
+    $mainColor: green;
+    color: $mainColor;
+}
+      </pre>
+      <p>_tables.scss</p>
+      <pre>
+$borderStyle: solid 1px $mainColor;
+$fontSize: 20px;
+
+td, th {
+    border: $borderStyle;
+    font-size: $fontSize;
+}
+
+th {
+    color: $mainColor;
+}
+
+table {
+    border-collapse: collapse;
+}
+      </pre>
+      <p>Notice that in the _tables.scss file, $mainColor is used but not defined.  Running this would give an error message if it was not a partial. However, as a partial it will never be a css file by itself so it's ok.  With that being said, the order in which the files are imported matters because variables must be defined before they are used.</p>
+      <p>main.scss</p>
+      <pre>
+$space: 15px;
+
+div{
+    margin: $space;
+}
+
+p, li {
+    margin: $removeMargin;
+    font-size: $fontSize;
+}
+      </pre>
+      <p>Now that the three files are created and saved, it's time to add our import directives. Because we defined $mainColor in the _headers.scss partial, that partial should be imported first. Add </p>
+      <pre>@import "_headers";
+@import "_tables";
+      </pre>
+      <p>to the top of the main.scss file before the variables and save.  Notice you don't need the extensions scss, just the name of the file and Sass does the rest.  However, if you have css and scss files with the same name you'll need the extension.  Also, if your files are in another directory though you will have to include the path.</p> 
+      <p>A main.css file should be created.  Open it to take a look.  (If we didn't see the friendly 'Rendering complete' in your command-line after creating the files, you may need to 'Control+C' and restart node-sass with the command './node_modules/.bin/node-sass -o stylesheets/css stylesheets/scss –w')</p> 
+      </div>
+      <div>
+        <h2 id="mixins">Mixins</h2>
+      <p>Before beginning our discussion on Mixins, let's first discuss CSS vendor prefixes for anyone learning HTML/CSS who is unfamiliar with this concept.  As you begin using more and more advanced CSS, you may start to find some browsers support these newer CSS properties, while others don't.  Before the browser fully supports the CSS, you can 'experiment' with the CSS features by adding prefixes on.  The prefixes allow the browser to try to use your code, but if it isn't supported it won't break the code.  
+      With that said, here is an example of a CSS Vendor Prefix for making your borders round:
+      <pre>-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ms-border-radius: 4px;
+ border-radius: 4px;
+      </pre>
+      <p>To avoid having to write the prefixes over and over for various selectors, you can use a mixin to group the CSS declaration and use it throughout your styles.  Take for example you want some of your divs to rotate.  To do this you can use the transform CSS property with vendor prefixes.  In your main.scss, after import you can copy/paste the folllowing code:
+      <pre>@mixin rotate($rotation) {
+-webkit-transform: rotate($rotation); 
+-ms-transform: rotate($rotation);
+ transform: rotate($rotation);  
+}       
+      </pre>
+      <p>You can then use and reuse the mixin anywhere you want in the SCSS file. To do so you simply use the @include directive.  For example, in the sample project you can cause the divs for the unordered list and the paragraph to rotate 10 degrees with the following lines:</p>
+      <pre>
+#skewRight {
+    @include rotate(10deg);
+}
+
+#skewLeft{
+  @include rotate(-10deg);
+}
+      </pre>
+    <p>If you are not following along with the sample project and you can see the CSS results in the <a href= "http://www.sassmeister.com/gist/15e863819d34628deb05c5e22d767eab" target="_blank">Sass Playground</a>.  
+    </div>
+      <div>
+        <h2 id="inheritance">Inheritance</h2>
+        <p>You can have your selectors inherit properties with the @extend directive.  This is similar to a mixin, allowing you to pass a properties to the selector.  However, unlike a mixin where you are choosing a group of properties to include, with @extend you choose the selector having the properties you want to include on the selector.  For this example let's return to our _tables.scss and include a few more properties.  You can follow along with your sample project or click the link to go play in the <a href = "http://www.sassmeister.com/gist/e9aed53985be428e2689d1304b60873b" target="_blank">Sass Playground</a>. Erase the previous code in the _tables.scss and copy the following:</p>
+        <pre>
+$borderStyle: solid 1px $mainColor;
+$fontSize: 20px;
+
+table {
+  border-collapse: collapse;
+}
+
+.header {
+    text-align: center;
+    padding: 5px;
+    color:  $mainColor;
+    border: $borderStyle;
+    font-size: $fontSize;
+}
+        </pre> 
+        <p> So we have the header class selector of our table with those properties.  Now copy the following code into your _table.scss after the header selector block and complete the code using inheritance:</p>
+        <pre>
+// Using @extend we can have the .first selector inherit the properties from header.
+
+.first {
+    @extend .header;
+    color: #333333;
+    text-align: left;
+}
+
+// Now try to have the second selector inherit all the properties from header except the color, which will be #666666
+
+.second {
+
+}
+
+// Again, have the third selector inherit all the properties from header except color which will be #999999 and text-align which will be right. 
+
+.third {
+
+}
+        </pre> 
+        <p>As you can see, it's not copying the properties outright or you would have multiple properties for color and text-align.  It's copying the remaining properties from header though, allowing us more concise, easy to follow code.</p>
+        <p>To see the SCSS solution, click <a href="http://www.sassmeister.com/gist/407bb8cb31c59f9730df26633bc9800c" target="_blank">here</a>.</p> 
+      </div>  
+      <div>
+        <h2 id="operators">Operators</h2>
+        <p>Unlike in CSS, Sass actually allows mathematical expressions for our scripting.  Operators such as<p class= "alight-center">
+        &emsp;+&emsp;-&emsp;/&emsp;*&emsp;%&emsp;==&emsp;!=&emsp;are used to allow more dynamic code.  A few things to keep in mind though:</p>
+        1. Be careful with your units.  You may think when you multiply 5px * 10px you're getting 50px, but in reality you now have 50px*px, which CSS doesn't recognize. Instead, multiple 5px * 10 to get 50px.<br> 
+        2. The value units cannot be mixed. Just like some other programming languages, you'll need to convert your units to the like types before performing operations on them.  For example, 50px * 10% will give you 500%px, which isn't recognized by CSS.<br>  
+        3. Division must be wrapped in parentheses because in CSS the / symbol is used for the font property such as font: 14px/16px.  Therefore, your divion statement could look like $font: (60px/15px) or $font:(50px/5);
+        <p>Head over the <a href="http://www.sassmeister.com/gist/7db5f5d47bc4cbac201a8f8ccb5a6fe5" target="_blank">Sass Playground</a> for some exercises in Operators.
+      </div> 
+      <div>
+        <h2 id="functions">Functions</h2>
+        <p>Saving the best for last, functions have allowed Sass to bring CSS to life.  Gone are the days of fiddling with the hexidecimal color wheel to find that perfect shade.  Instead, leave it to color functions. Numbers can be cast, rounded, and even randomized. Lists and Maps and Selectors oh my! Functions even allow you to check if a variable can exists in your Sass document.  For a complete list of functions, check out the <a href = "http://sass-lang.com/documentation/Sass/Script/Functions.html">Sass Documentation</a>.</p>
+        <p>And now for a few examples.</p>
+        <h3>Built-In Function</h3>
+        <p>Lets try using the lighten function in leu of choosing hexidecimal colors for the cells of our table Using the previous code in _tables.scss and the function <strong>lighten($color, $amount)</strong>, we can achieve a better fade of the color.</pre>    
+        <pre>
+// Using @extend we can have the .first selector inherit the properties from header.
+$cellColor: #000000;
+$borderStyle: solid 1px $mainColor;
+$fontSize: 20px;
+
+table {
+  border-collapse: collapse;
+}
+
+.header {
+    text-align: center;
+    padding: 5px;
+    color:  $mainColor;
+    border: $borderStyle;
+    font-size: $fontSize;
+}
+
+//First will have its color 15% lighter than black (#000000)
+.first {
+    @extend .header;
+    text-align: left;
+    color: lighten($cellColor, 15%);
+}
+
+// Second will have its color 30% lighter
+.second {
+    @extend .header;
+    color: lighten($cellColor, 30%);
+}
+
+// Third will have its color 45% lighter  
+
+.third {
+    @extend .header;
+    color: lighten($cellColor, 45%);
+    text-align: right;
+}
+        </pre>
+        <p>And because our sample project has such a bold shade of blue, let's soften it a bit by changing the first line of our _headers.scss file to this</p>
+        <pre>$mainColor: lighten(blue, 20%);
+        </pre>
+        <p>For those not following along with the sample project, <a href="http://www.sassmeister.com/gist/ad197a5ec39491e774561962a8b82fb3" target="_blank">Sass Playground</a> has you covered.</p>
+        <h3>Custom Functions</h3>
+        <p>If Sass's pre-built functions just aren't doing the trick, you can just make your own.  Below is an example of a custom function in Sass. 
+      <pre>
+@function calculate-size($size, $factor) {
+    @return $size * $factor;
+}
+
+      </pre>  
+      <p>To watch this work, copy it in your _headers.scss file and add the following line to the h1 and h2 selectors.</p>
+      <pre> 
+// In h1
+  font-size: calculate-size(30px, 2);
+
+// In h2
+  font-size: calculate-size(20px, 2);
+      </pre>
+      <p>Viola!  Feel free to play a while longer, or <a href= "final.html">read on</a></p>
+      </div>
+    </div><!-- /.container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
